@@ -14,23 +14,28 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(expenses.items, id: \.name) { item in
-                    Text(item.name)
+            VStack{
+                List {
+                    ForEach(expenses.items, id: \.name) { item in
+                        Text(item.name)
+                    }
+                    .onDelete(perform: removeItems)
+                    
+                    
                 }
-                .onDelete(perform: removeItems)
-            }
-            .navigationTitle("iExpense")
-            .toolbar{
-                Button {
-                    let expense = ExpensionItem(name: "test", type: "personal", amount: 5)
-                    expenses.items.append(expense)
-                } label: {
-                    Image(systemName: "plus")
+                .navigationTitle("iExpense")
+                .toolbar{
+                    Button {
+                        let expense = ExpensionItem(name: "test", type: "personal", amount: 6)
+                        expenses.items.append(expense)
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                    
                 }
+                
             }
         }
-        
         .padding()
     }
     func removeItems(at offets: IndexSet) {
