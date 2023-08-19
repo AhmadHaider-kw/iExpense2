@@ -8,7 +8,8 @@
 import Foundation
 
 
-struct ExpensionItem {
+struct ExpensionItem : Identifiable {
+    let id = UUID()
     let name : String
     let type : String
     let amount : Double
